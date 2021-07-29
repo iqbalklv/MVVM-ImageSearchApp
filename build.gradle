@@ -6,7 +6,7 @@ buildscript {
         lifecycle_version = "2.4.0-alpha02"
         fragment_version = "1.4.0-alpha04"
         retrofit_version = '2.9.0'
-        paging_version = '3.0.0-alpha05'
+        paging_version = '3.1.0-alpha03'
         retrofit_version = '2.9.0'
         glide_version = '4.11.0'
     }

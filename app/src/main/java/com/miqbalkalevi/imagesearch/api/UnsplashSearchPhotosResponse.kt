@@ -1,6 +1,6 @@
-package com.miqbalkalevi.imagesearch.model
+package com.miqbalkalevi.imagesearch.data
 
-data class Response(
+data class UnsplashSearchPhotosResponse(
 	val total: Int? = null,
 	val totalPages: Int? = null,
 	val results: List<UnsplashPhoto?>? = null

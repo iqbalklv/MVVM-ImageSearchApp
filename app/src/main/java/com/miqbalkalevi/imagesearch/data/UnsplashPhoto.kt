@@ -1,4 +1,4 @@
-package com.miqbalkalevi.imagesearch.model
+package com.miqbalkalevi.imagesearch.data
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
