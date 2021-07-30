@@ -36,9 +36,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_retry"
         android:layout_centerHorizontal="true"
+        android:text="Results could not be loaded"
         android:visibility="gone"
-        tools:visibility="visible"
-        android:text="Results could not be loaded" />
+        tools:visibility="visible" />
 
 
     <TextView
