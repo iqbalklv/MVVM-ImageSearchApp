@@ -38,8 +38,8 @@ class UnsplashPhotoLoadStateAdapter(private val retry: () -> Unit) :
         fun bind(loadState: LoadState) {
             binding.apply {
                 pbFooter.isVisible = loadState is LoadState.Loading
-                btnRetry.isVisible = loadState !is LoadState.Loading
-                tvErrorLoad.isVisible = loadState !is LoadState.Loading
+                btnRetry.isVisible = loadState is LoadState.Error
+                tvErrorLoad.isVisible = loadState is LoadState.Error
             }
         }
 
