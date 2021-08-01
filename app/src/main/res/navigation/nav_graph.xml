@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/galleryFragment2">
+    app:startDestination="@id/galleryFragment">
     <fragment
-        android:id="@+id/galleryFragment2"
+        android:id="@+id/galleryFragment"
         android:name="com.miqbalkalevi.imagesearch.ui.gallery.GalleryFragment"
-        android:label="fragment_gallery"
+        android:label="Unsplash Gallery"
         tools:layout="@layout/fragment_gallery" />
 </navigation>
