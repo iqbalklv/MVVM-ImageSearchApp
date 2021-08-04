@@ -8,13 +8,19 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.miqbalkalevi.imagesearch.R
+import com.miqbalkalevi.imagesearch.data.UnsplashPhoto
 import com.miqbalkalevi.imagesearch.databinding.FragmentGalleryBinding
+import com.miqbalkalevi.imagesearch.util.exhaustive
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
-class GalleryFragment : Fragment(R.layout.fragment_gallery) {
+class GalleryFragment : Fragment(R.layout.fragment_gallery),
+    UnsplashPhotoAdapter.OnItemClickListener {
 
     private val viewModel by viewModels<GalleryViewModel>()
 
@@ -26,7 +32,7 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
 
         _binding = FragmentGalleryBinding.bind(view)
 
-        val adapter = UnsplashPhotoAdapter()
+        val adapter = UnsplashPhotoAdapter(this)
 
         binding.apply {
             rvGallery.setHasFixedSize(true)
@@ -65,7 +71,24 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
             }
         }
 
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.galleryEvent.collect { event ->
+                when (event) {
+                    is GalleryViewModel.GalleryEvent.NavigateToDetailsScreen -> {
+                        val action =
+                            GalleryFragmentDirections.actionGalleryFragmentToDetailsFragment(event.photo)
+                        findNavController().navigate(action)
+                    }
+                }.exhaustive
+            }
+        }
+
+
         setHasOptionsMenu(true)
+    }
+
+    override fun onItemClick(photo: UnsplashPhoto) {
+        viewModel.onPhotoClicked(photo)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
