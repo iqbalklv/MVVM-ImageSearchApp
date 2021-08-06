@@ -36,10 +36,10 @@
 
             <TextView
                 android:id="@+id/tv_creator"
+                android:textColor="?textSecondaryColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:textColor="@color/black"
                 android:visibility="gone"
                 tools:text="Photo by User on Unsplash"
                 tools:visibility="visible" />

@@ -16,10 +16,15 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.miqbalkalevi.imagesearch.ui.details.DetailsFragment"
-        android:label="fragment_details"
+        android:label="{title}"
         tools:layout="@layout/fragment_details">
         <argument
             android:name="photo"
             app:argType="com.miqbalkalevi.imagesearch.data.UnsplashPhoto" />
+        <argument
+            android:name="title"
+            android:defaultValue="Photo"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

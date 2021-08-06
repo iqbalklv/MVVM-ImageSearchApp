@@ -75,8 +75,12 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery),
             viewModel.galleryEvent.collect { event ->
                 when (event) {
                     is GalleryViewModel.GalleryEvent.NavigateToDetailsScreen -> {
+                        val username = event.photo.user?.username
                         val action =
-                            GalleryFragmentDirections.actionGalleryFragmentToDetailsFragment(event.photo)
+                            GalleryFragmentDirections.actionGalleryFragmentToDetailsFragment(
+                                event.photo,
+                                if (username != null) "@$username" else null
+                            )
                         findNavController().navigate(action)
                     }
                 }.exhaustive
